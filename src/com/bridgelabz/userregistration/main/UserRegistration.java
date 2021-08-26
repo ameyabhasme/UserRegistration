@@ -22,6 +22,10 @@ public class UserRegistration {
 	public boolean mobileNumber(String userMobNumber) {
 		return isValidPattern(userMobNumber, Constants.MOBILE_NUMBER_REGEX);
 	}
+	
+	public boolean password(String userPassword) {
+		return isValidPattern(userPassword, Constants.PASSWORD_REGEX);
+	}
 
 	public boolean isValidPattern(String input, String regexPattern) {
 		Pattern pattern = Pattern.compile(regexPattern);
