@@ -18,6 +18,10 @@ public class UserRegistration {
 	public boolean emailID(String userEmail) {
 		return isValidPattern(userEmail, Constants.EMAIL_ID_REGEX);
 	}
+	
+	public boolean mobileNumber(String userMobNumber) {
+		return isValidPattern(userMobNumber, Constants.MOBILE_NUMBER_REGEX);
+	}
 
 	public boolean isValidPattern(String input, String regexPattern) {
 		Pattern pattern = Pattern.compile(regexPattern);
