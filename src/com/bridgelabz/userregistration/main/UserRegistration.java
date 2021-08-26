@@ -8,14 +8,18 @@ import com.bridgelabz.userregistration.utils.Constants;
 public class UserRegistration {
 	
 	public boolean firstName(String userFirstName) {
-		return IsValidPattern(userFirstName, Constants.FIRST_NAME_REGEX);
+		return isValidPattern(userFirstName, Constants.FIRST_NAME_REGEX);
 	}
 	
 	public boolean lastName(String userLastName) {
-		return IsValidPattern(userLastName, Constants.LAST_NAME_REGEX);
+		return isValidPattern(userLastName, Constants.LAST_NAME_REGEX);
+	}
+	
+	public boolean emailID(String userEmail) {
+		return isValidPattern(userEmail, Constants.EMAIL_ID_REGEX);
 	}
 
-	public boolean IsValidPattern(String input, String regexPattern) {
+	public boolean isValidPattern(String input, String regexPattern) {
 		Pattern pattern = Pattern.compile(regexPattern);
 		Matcher matcher = pattern.matcher(input);
 		return matcher.matches();
