@@ -2,12 +2,13 @@ package com.bridgelabz.userregistration.test;
 
 import java.util.Scanner;
 
+import com.bridgelabz.userregistration.exceptions.InvalidInputException;
 import com.bridgelabz.userregistration.main.UserRegistration;
 
 public class TestPassword {
 	static final Scanner SC = new Scanner(System.in);
 
-	public static void checkValidTest(UserRegistration userRegistration, String userPassword) {
+	public static void checkValidTest(UserRegistration userRegistration, String userPassword) throws InvalidInputException {
 		if (userRegistration.password(userPassword)) {
 			System.out.println("Valid Password: " + userPassword);
 		} else {
@@ -15,7 +16,7 @@ public class TestPassword {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidInputException {
 		UserRegistration userRegistration = new UserRegistration();
 		int key = 0;
 		while (key != 2) {

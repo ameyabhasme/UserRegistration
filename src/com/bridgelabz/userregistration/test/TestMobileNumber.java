@@ -2,12 +2,13 @@ package com.bridgelabz.userregistration.test;
 
 import java.util.Scanner;
 
+import com.bridgelabz.userregistration.exceptions.InvalidInputException;
 import com.bridgelabz.userregistration.main.UserRegistration;
 
 public class TestMobileNumber {
 	static final Scanner SC = new Scanner(System.in);
 
-	public static void checkValidTest(UserRegistration userRegistration, String userMobNumber) {
+	public static void checkValidTest(UserRegistration userRegistration, String userMobNumber) throws InvalidInputException {
 		if (userRegistration.mobileNumber(userMobNumber)) {
 			System.out.println("Valid Mobile Number: " + userMobNumber);
 		} else {
@@ -15,7 +16,7 @@ public class TestMobileNumber {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidInputException {
 		UserRegistration userRegistration = new UserRegistration();
 		int key = 0;
 		while (key != 2) {

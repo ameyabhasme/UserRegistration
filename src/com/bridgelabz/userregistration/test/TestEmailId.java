@@ -3,11 +3,12 @@ package com.bridgelabz.userregistration.test;
 import java.util.Arrays;
 import java.util.List;
 
+import com.bridgelabz.userregistration.exceptions.InvalidInputException;
 import com.bridgelabz.userregistration.main.UserRegistration;
 
 public class TestEmailId {
 
-	public static void checkValidTest(UserRegistration userRegistration, String userEmail) {
+	public static void checkValidTest(UserRegistration userRegistration, String userEmail) throws InvalidInputException {
 		if (userRegistration.emailID(userEmail)) {
 			System.out.println("Valid Email Id: " + userEmail);
 		} else {
@@ -15,7 +16,7 @@ public class TestEmailId {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidInputException {
 		UserRegistration userRegistration = new UserRegistration();
 		List<String> emailSamples = Arrays.asList(
 		"abc@yahoo.com",
