@@ -6,11 +6,21 @@ import java.util.regex.Pattern;
 import com.bridgelabz.userregistration.exceptions.InvalidInputException;
 import com.bridgelabz.userregistration.utils.Constants;
 
+interface CheckValid {
+	public boolean isValidPattern(String input, String regexPattern);
+}
+
 public class UserRegistration {
 
+	CheckValid checkvalidity = (String input, String regexPattern) -> {
+		Pattern pattern = Pattern.compile(regexPattern);
+		Matcher matcher = pattern.matcher(input);
+		return matcher.matches();
+	};
+	
 	public boolean firstName(String userFirstName) throws InvalidInputException {
 		
-		if (isValidPattern(userFirstName, Constants.FIRST_NAME_REGEX))
+		if (checkvalidity.isValidPattern(userFirstName, Constants.FIRST_NAME_REGEX))
 			return true;
 		else
 			throw new InvalidInputException(Constants.INVALID_FIRST_NAME);
@@ -18,7 +28,7 @@ public class UserRegistration {
 
 	public boolean lastName(String userLastName) throws InvalidInputException {
 
-		if (isValidPattern(userLastName, Constants.LAST_NAME_REGEX))
+		if (checkvalidity.isValidPattern(userLastName, Constants.LAST_NAME_REGEX))
 			return true;
 		else
 			throw new InvalidInputException(Constants.INVALID_LAST_NAME);
@@ -26,7 +36,7 @@ public class UserRegistration {
 
 	public boolean emailID(String userEmail) throws InvalidInputException {
 
-		if (isValidPattern(userEmail, Constants.EMAIL_ID_REGEX))
+		if (checkvalidity.isValidPattern(userEmail, Constants.EMAIL_ID_REGEX))
 			return true;
 		else
 			throw new InvalidInputException(Constants.INVALID_EMAIL_ID);
@@ -34,7 +44,7 @@ public class UserRegistration {
 
 	public boolean mobileNumber(String userMobNumber) throws InvalidInputException {
 
-		if (isValidPattern(userMobNumber, Constants.MOBILE_NUMBER_REGEX))
+		if (checkvalidity.isValidPattern(userMobNumber, Constants.MOBILE_NUMBER_REGEX))
 			return true;
 		else
 			throw new InvalidInputException(Constants.INVALID_MOBILE_NUMBER);
@@ -42,15 +52,9 @@ public class UserRegistration {
 
 	public boolean password(String userPassword) throws InvalidInputException {
 
-		if (isValidPattern(userPassword, Constants.PASSWORD_REGEX))
+		if (checkvalidity.isValidPattern(userPassword, Constants.PASSWORD_REGEX))
 			return true;
 		else
 			throw new InvalidInputException(Constants.INVALID_PASSWORD);
-	}
-
-	public boolean isValidPattern(String input, String regexPattern) {
-		Pattern pattern = Pattern.compile(regexPattern);
-		Matcher matcher = pattern.matcher(input);
-		return matcher.matches();
 	}
 }
